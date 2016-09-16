@@ -6,7 +6,7 @@
    {% endattrs %}>
         <div class="btn">
             {% part field prefix %}<span>{% trans 'File' %}</span>{% endpart %}
-            <input type="file" name="{{ bound_field.html_name }}_tmp" id="{{ bound_field.html_name }}_tmp"/>
+            <input type="file" name="{{ bound_field.html_name }}_tmp" id="id_{{ bound_field.html_name }}_tmp"/>
             <script type="text/javascript">
                 function {{bound_field.html_name}}_previewFile() {
                   var {{bound_field.html_name}}file_input = document.getElementById('id_{{ bound_field.html_name }}');
@@ -22,7 +22,7 @@
                   }
                 }
             </script>
-            <input type="hidden" value="" name="id_{{ bound_field.html_name }}" id="id_{{ bound_field.html_name }}" />
+            <input type="hidden" value="" name="{{ bound_field.html_name }}" id="id_{{ bound_field.html_name }}" />
         </div>
         
         {% part field suffix %}{% endpart %}{% part field control %}<div class="file-path-wrapper">
