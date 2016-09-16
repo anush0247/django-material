@@ -6,7 +6,7 @@
    {% endattrs %}>
         <div class="btn">
             {% part field prefix %}<span>{% trans 'File' %}</span>{% endpart %}
-            <input type="file" name="{{ bound_field.html_name }}_tmp" id="id_{{ bound_field.html_name }}_tmp"/>
+            <input type="file" name="{{ bound_field.html_name }}_tmp" id="id_{{ bound_field.html_name }}_tmp" onchange="{{bound_field.html_name}}_previewFile()"/>
             <script type="text/javascript">
                 function {{bound_field.html_name}}_previewFile() {
                   var {{bound_field.html_name}}file_input = document.getElementById('id_{{ bound_field.html_name }}');
