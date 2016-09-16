@@ -6,11 +6,28 @@
    {% endattrs %}>
         <div class="btn">
             {% part field prefix %}<span>{% trans 'File' %}</span>{% endpart %}
-            <input type="file" name="{{ bound_field.html_name }}"/>
+            <input type="file" name="{{ bound_field.html_name }}_tmp" id="{{ bound_field.html_name }}_tmp"/>
+            <script type="text/javascript">
+                function {{bound_field.html_name}}_previewFile() {
+                  var {{bound_field.html_name}}file_input = document.getElementById('id_{{ bound_field.html_name }}');
+                  var file    = document.getElementById('id_{{ bound_field.html_name }}_tmp').files[0];
+                  var reader  = new FileReader();
+                  reader.addEventListener("load", function () {
+                    var value = file.name + ":::" +reader.result;
+                    console.log(value);
+                    {{ bound_field.html_name }}file_input.value = value
+                  }, false);
+                  if (file) {
+                    reader.readAsDataURL(file);
+                  }
+                }
+            </script>
+            <input type="hidden" value="" name="id_{{ bound_field.html_name }}" id="id_{{ bound_field.html_name }}" />
         </div>
+        
         {% part field suffix %}{% endpart %}{% part field control %}<div class="file-path-wrapper">
             <input{% attrs bound_field 'widget' default field.widget.attrs %}
-                id="id_{{ bound_field.html_name }}"
+                id="id_{{ bound_field.html_name }}_tmp"
                 type="text"
                 class="file-path"
                 placeholder="{{ bound_field.label }}"
