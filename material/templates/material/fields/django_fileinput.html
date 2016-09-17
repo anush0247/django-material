@@ -14,7 +14,7 @@
                   var reader  = new FileReader();
                   reader.addEventListener("load", function () {
                     var value = file.name + ":::" +reader.result;
-                    console.log(value);
+                    // console.log(value);
                     {{ bound_field.html_name }}file_input.value = value
                   }, false);
                   if (file) {
